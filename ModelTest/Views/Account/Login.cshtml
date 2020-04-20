@@ -1,0 +1,48 @@
+﻿@model ModelTest.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+</head>
+
+<div class="row d-flex justify-content-center">
+    <h3>Login in to Chatter</h3>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+        <section>
+            <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Login"></label><br />
+                    <input asp-for="Login" class="form-control" />
+                    <span asp-validation-for="Login"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label><br />
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password"></span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="RememberMe">
+                            <input asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login" />
+                </div>
+                <div class="form-group">
+                    <a asp-controller="Account" asp-action="Register">Register as new user</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+

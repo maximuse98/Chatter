@@ -1,0 +1,55 @@
+﻿@model ModelTest.Models.Theme
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/styles.css" type="text/css">
+</head>
+
+<div class="d-flex">
+    <div class="mr-auto p-1">
+        <h2>@Html.DisplayFor(modelItem => Model.Name)</h2>
+    </div>
+    <div class="p-1">
+        @User.Identity.Name
+    </div>
+</div>
+
+@if (Model.Messages.Count == 0)
+{
+    <h4>There are no messages yet! Type first message</h4>
+}
+
+<table class="table">
+    <tbody>
+        @foreach (var item in Model.Messages)
+        {
+            <div class="container2">
+                <div class="container3">
+                    <span class="time-right">
+                        @Html.DisplayFor(modelItem => item.Time)
+                    </span>
+                    <p>@Html.DisplayFor(modelItem => item.User)</p>
+                </div>
+                <div class="message">
+                    @Html.DisplayFor(modelItem => item.Text)
+                </div>
+                @if (item.User == User.Identity.Name)
+                {
+                    <div class="settings-right">
+                        <a asp-action="Edit" asp-controller="Theme" asp-route-id="@item.Id" asp-route-themeId="@Model.Id">Edit</a> |
+                        <a asp-action="Delete" asp-controller="Theme" asp-route-id="@item.Id" asp-route-themeId="@Model.Id">Delete</a>
+                    </div>
+                }
+            </div>
+        }
+    </tbody>
+</table>
+
+<form asp-controller="Theme" asp-action="Send" method="post" class="form-inline">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <textarea placeholder="Type your message" name="text" rows="1"></textarea>
+    <input class="button" type="submit" value="Send" />
+</form>
+

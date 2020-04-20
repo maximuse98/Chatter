@@ -1,0 +1,56 @@
+﻿body {
+    background-color: #F2F5F8;
+}
+
+/* Chat containers */
+.container2 {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.message {
+    width: 95%;
+}
+
+.container3 {
+    display: inline
+}
+
+/* Clear floats */
+.container2::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.settings-right {
+    float: right;
+    color: #999;
+}
+
+textarea {
+    border: none;
+    padding: 10px 20px;
+    font: 14px/22px "Lato", Arial, sans-serif;
+    border-radius: 5px;
+    resize: none;
+    width : 90%;
+}
+
+.button {
+    background: dodgerblue;
+    border-radius: 2px;
+    width: 10%;
+    color: white;
+    height: 40px;
+    border: none;
+}
